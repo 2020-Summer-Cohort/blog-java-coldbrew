@@ -1,13 +1,13 @@
-package org.wcci.blog;
+package com.iloremipsumshowcase.blog;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class BlogApplicationTests {
+class SmokeTest {
 
     @Test
-    public void contextLoads() {
+    void contextLoads() {
     }
 
 }
