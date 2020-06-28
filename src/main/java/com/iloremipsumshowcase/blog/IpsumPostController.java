@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -30,15 +31,15 @@ public class IpsumPostController {
     }
 
     @PostMapping("ipsumposts/add")
-    public String addIpsumPost(String ipsumName, String ipsumDescription, String ipsumSample, String ipsumSource, String date, String categoryName, String authorName, long... hashtagIds) {
+    public String addIpsumPost(String ipsumName, String ipsumDescription, String ipsumSample, String ipsumSource, String bgPic, LocalDate date, String categoryName, String authorName, long... hashtagIds) {
         IpsumCategory postIpsumCategory = ipsumCategoryRepo.findByName(categoryName);
         Author postAuthor = authorRepo.findByName(authorName);
         Collection<Hashtag> postHashtags = Arrays.stream(hashtagIds)
                 .mapToObj(id->hashtagRepo.findHashtagById(id))
                 .collect(Collectors.toSet());
         ipsumPostRepo.save(new IpsumPost(ipsumName,ipsumDescription,
-                ipsumSample, ipsumSource, date, postIpsumCategory,
-                postAuthor, postHashtags.toArray(Hashtag[]::new)));
+                ipsumSample, ipsumSource, bgPic, date,
+                postIpsumCategory, postAuthor, postHashtags.toArray(Hashtag[]::new)));
 
         return "redirect:/ipsumcategories/" +categoryName;
     }

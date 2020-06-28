@@ -1,6 +1,7 @@
 package com.iloremipsumshowcase.blog;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -15,7 +16,8 @@ public class IpsumPost {
     private String ipsumDescription;
     private String ipsumSample;
     private String ipsumSource;
-    private String date;
+    private String bgPic;
+    private LocalDate date;
     @ManyToOne
     private IpsumCategory ipsumCategory;
     @ManyToOne
@@ -30,13 +32,14 @@ public class IpsumPost {
 
 
     public IpsumPost(String ipsumName, String ipsumDescription, String ipsumSample, String ipsumSource,
-                     String date, IpsumCategory ipsumCategory, Author author, Hashtag...hashtags) {
+                     String bgPic, LocalDate date, IpsumCategory ipsumCategory, Author author, Hashtag... hashtags) {
         this.ipsumName = ipsumName;
         this.ipsumDescription = ipsumDescription;
         this.ipsumSample = ipsumSample;
         this.ipsumSource = ipsumSource;
         this.ipsumCategory = ipsumCategory;
         this.author = author;
+        this.bgPic = bgPic;
         this.date = date;
         this.hashtags = new ArrayList<>(Arrays.asList(hashtags));
 
@@ -59,7 +62,7 @@ public class IpsumPost {
     public String getIpsumSource() {
         return ipsumSource;
     }
-    public String getDate() { return date;}
+    public LocalDate getDate() { return date;}
     public IpsumCategory getIpsumCategory() {
         return ipsumCategory;
     }
