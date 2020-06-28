@@ -30,7 +30,7 @@ public class JPAWiringTest {
         hashtagRepo.save(testHashtag2);
         ipsumCategoryRepo.save(testCategory);
         authorRepo.save(testAuthor);
-        IpsumPost testPost = new IpsumPost("Name of Ipsum", "Description of Ipsum", "Sample of Ipsum", "Source of ipsum", , "date", testCategory, testAuthor);
+        IpsumPost testPost = new IpsumPost("Name of Ipsum", "Description of Ipsum", "Sample of Ipsum", "Source of ipsum", "placeholder", null, testCategory, testAuthor);
        ipsumPostRepo.save(testPost);
 
         entityManager.flush();
@@ -52,8 +52,8 @@ public class JPAWiringTest {
     Author testAuthor = new Author("firstName");
     authorRepo.save(testAuthor);
 
-    IpsumPost testPost1 = new IpsumPost("Name of Ipsum", "Description of Ipsum", "Sample of Ipsum", "Source of ipsum", , "date", testCategory, testAuthor);
-    IpsumPost testPost2 = new IpsumPost("FFF ", "Description of Ipsum", "Sample of Ipsum", "Source of ipsum", , "date", testCategory, testAuthor);
+    IpsumPost testPost1 = new IpsumPost("Name of Ipsum", "Description of Ipsum", "Sample of Ipsum", "Source of ipsum", "h", null, testCategory, testAuthor);
+    IpsumPost testPost2 = new IpsumPost("FFF ", "Description of Ipsum", "Sample of Ipsum", "Source of ipsum","h" , null, testCategory, testAuthor);
     ipsumPostRepo.save(testPost1);
     ipsumPostRepo.save(testPost2);
 

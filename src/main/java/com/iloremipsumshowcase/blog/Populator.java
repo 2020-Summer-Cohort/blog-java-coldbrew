@@ -22,9 +22,9 @@ public class Populator implements CommandLineRunner {
 
     @Override
     public void run(String... args){
-        IpsumCategory alphabetIpsums = new IpsumCategory("Alphabet Ipsums","Lorem Ipsums which utilize other alphabets and languages");
-        IpsumCategory humorIpsums = new IpsumCategory("Chuckle Ipsums","Twists on the classic Lorem Ipsum designed to make the reader laugh.");
-        IpsumCategory fillerIpsum = new IpsumCategory("Other Filler Texts","Unique Ipsum-ajacent methods of filling up text on a page");
+        IpsumCategory alphabetIpsums = new IpsumCategory("Alphabet_Ipsums","Lorem Ipsums which utilize other alphabets and languages");
+        IpsumCategory humorIpsums = new IpsumCategory("Chuckle_Ipsums","Twists on the classic Lorem Ipsum designed to make the reader laugh.");
+        IpsumCategory fillerIpsum = new IpsumCategory("Other_Filler_Texts","Unique Ipsum-ajacent methods of filling up text on a page");
         ipsumCategoryRepo.save(alphabetIpsums);
         ipsumCategoryRepo.save(humorIpsums);
         ipsumCategoryRepo.save(fillerIpsum);

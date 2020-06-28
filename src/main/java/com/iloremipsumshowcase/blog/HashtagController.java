@@ -2,7 +2,9 @@ package com.iloremipsumshowcase.blog;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 public class HashtagController {
 private HashtagRepository hashtagRepo;
@@ -12,20 +14,24 @@ private IpsumPostRepository ipsumPostRepo;
         this.ipsumPostRepo = ipsumPostRepo;
     }
 
-    @GetMapping("hashtag/{id}")
-    public String showSingleHashtag(long id, Model model) {
-    model.addAttribute("hashtag",hashtagRepo.findHashtagById(id));
+    @RequestMapping("hashtags/{id}")
+    public String showSingleHashtag( @PathVariable Long id, Model model) {
+    model.addAttribute("hashtags",hashtagRepo.findById(id));
     return "hashtag-template";
     }
-
-    @PostMapping("hashtag/add")
+    @GetMapping("hashtags")
+    public String showAllHashtags(Model model){
+        model.addAttribute("hashtags", hashtagRepo.findAll());
+        return "home-template";
+    }
+    @PostMapping("hashtags/add")
     public String addHashtag(String hashtagName){
         Hashtag hashtagToAdd = new Hashtag(hashtagName);
         hashtagRepo.save(hashtagToAdd);
         return "redirect:/";
     }
 
-    @PostMapping("hashtag/delete")
+    @PostMapping("hashtags/delete")
     public String deleteHashtag(Long hashtagId){
         hashtagRepo.deleteById(hashtagId);
         return "redirect:/";

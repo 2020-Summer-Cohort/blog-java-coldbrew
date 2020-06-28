@@ -14,25 +14,26 @@ public class IpsumCategoryController {
         this.ipsumCategoryRepo = ipsumCategoryRepo;
         this.hashtagRepo = hashtagRepo;
     }
+
     @GetMapping("ipsumcategories")
     public String displayAllIpsumCategories(Model model) {
-        model.addAttribute("ipsumcategories",ipsumCategoryRepo.findAll());
-        model.addAttribute("hashtags",hashtagRepo.findAll());
+        model.addAttribute("ipsumcategories", ipsumCategoryRepo.findAll());
+        model.addAttribute("hashtags", hashtagRepo.findAll());
         return "home-template";
     }
+
     @GetMapping("ipsumcategories/{ipsumCategoryName}")
     public String showSingleIpsumCategory(String ipsumCategoryName, Model model) {
-    model.addAttribute("ipsumcategory",ipsumCategoryRepo.findByCategoryName(ipsumCategoryName));
-    model.addAttribute("hashtags",hashtagRepo.findAll());
-    return "ipsumcategory-template";
+        model.addAttribute("ipsumcategory", ipsumCategoryRepo.findByCategoryName(ipsumCategoryName));
+        model.addAttribute("hashtags", hashtagRepo.findAll());
+        return "ipsumcategory-template";
 
     }
+
     @PostMapping("ipsumcategories/add")
-    public String addIpsumCategory(String ipsumCategoryName, String description ){
-        IpsumCategory ipsumCategoryToAdd = new IpsumCategory(ipsumCategoryName,description);
+    public String addIpsumCategory(String categoryName, String description) {
+        IpsumCategory ipsumCategoryToAdd = new IpsumCategory(categoryName, description);
         ipsumCategoryRepo.save(ipsumCategoryToAdd);
         return "redirect:/";
     }
-//    @PostMapping("/categories/add")
-//    public String addNewIpsumCategory()
 }

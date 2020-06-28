@@ -24,7 +24,7 @@ public class Hashtag {
         this.hashtagName = hashtagName;
         this.ipsumPosts = new ArrayList<>(Arrays.asList(ipsumPosts));
     }
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

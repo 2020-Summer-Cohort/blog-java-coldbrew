@@ -8,6 +8,7 @@
     <title>Title</title>
 </head>
 <body>
+<nav>
 <ul>
     <li>
     <a href="../">Home</a>
@@ -18,6 +19,39 @@
     </li>
 
 </ul>
+</nav>
+<section class = "container">
+    <h1>Miles' Miracle Ipsum Emporium</h1>
+    <h4>in-depth discussions regarding how to take up space on webpages which desperately need content.</h4>
 
+</section>
+<section class = "ipsumcategories">
+    <ul class = "category-list">
+        <li th:each="ipsumcategory: ${ipsumcategories}">
+            <a class="categorylinks"
+               th:href="@{'/ipsumcategories/' + ${ipsumcategory.categoryName}}">
+                <span th:text="${ipsumcategory.categoryName}">Category name</span>
+            </a>
+        </li>
+    </ul>
+</section>
+<section class = "hashtag-section">
+    <h2>Explore</h2>
+    <h4>search by tag to find the filler text you NEED in your life</h4>
+    <ul>
+        <li th:each="hashtag: ${hashtags}"><a th:href="@{'/hashtags/' + ${hashtag.id}}"><span th:text="'#'+${hashtag.hashtagName}"></span></a></li>
+    </ul>
+</section>
+<form action="ipsumcategories/add" method="POST" class="new-category-form">
+    <label >
+        New Category:
+    </label>
+    <input type="text" name="categoryName" id = " ">
+    <label>
+        Description:
+    </label>
+    <input type="text" name = "description" id = " ">
+    <button type = "submit">submit</button>
+</form>
 </body>
 </html>
