@@ -48,7 +48,7 @@ public class CategoryControllerTest {
     @Test
     public void showSingleIpsumCategoryAddsRetrievedIpsumCategoryToModel(){
         IpsumCategory testCategory = new IpsumCategory("fun ipsum","filler text thats so much fun");
-        when(mockIpsumCategoryRepo.findByName("fun ipsum")).thenReturn(testCategory);
+        when(mockIpsumCategoryRepo.findByCategoryName("fun ipsum")).thenReturn(testCategory);
 
         underTest.showSingleIpsumCategory("fun ipsum",model);
         verify(model).addAttribute("ipsumcategory",testCategory);

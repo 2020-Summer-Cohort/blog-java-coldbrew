@@ -22,7 +22,7 @@ public class IpsumCategoryController {
     }
     @GetMapping("ipsumcategories/{ipsumCategoryName}")
     public String showSingleIpsumCategory(String ipsumCategoryName, Model model) {
-    model.addAttribute("ipsumcategory",ipsumCategoryRepo.findByName(ipsumCategoryName));
+    model.addAttribute("ipsumcategory",ipsumCategoryRepo.findByCategoryName(ipsumCategoryName));
     model.addAttribute("hashtags",hashtagRepo.findAll());
     return "ipsumcategory-template";
 

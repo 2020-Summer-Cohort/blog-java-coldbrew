@@ -32,8 +32,8 @@ public class IpsumPostController {
 
     @PostMapping("ipsumposts/add")
     public String addIpsumPost(String ipsumName, String ipsumDescription, String ipsumSample, String ipsumSource, String bgPic, LocalDate date, String categoryName, String authorName, long... hashtagIds) {
-        IpsumCategory postIpsumCategory = ipsumCategoryRepo.findByName(categoryName);
-        Author postAuthor = authorRepo.findByName(authorName);
+        IpsumCategory postIpsumCategory = ipsumCategoryRepo.findByCategoryName(categoryName);
+        Author postAuthor = authorRepo.findByAuthorName(authorName);
         Collection<Hashtag> postHashtags = Arrays.stream(hashtagIds)
                 .mapToObj(id->hashtagRepo.findHashtagById(id))
                 .collect(Collectors.toSet());
