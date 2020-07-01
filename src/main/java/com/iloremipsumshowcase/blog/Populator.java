@@ -44,6 +44,7 @@ public class Populator implements CommandLineRunner {
         hashtagRepo.save(hashtag3);
         LocalDate date1 = LocalDate.of(2020, 6, 27);
         LocalDate date2 = LocalDate.of(2020, 6,28);
+        LocalDate date3 = LocalDate.now();
 
 //        this.ipsumName = ipsumName;
 //        this.ipsumDescription = ipsumDescription;
