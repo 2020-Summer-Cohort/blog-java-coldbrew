@@ -28,6 +28,7 @@ public class IpsumPostController {
     public String showSingleIpsumPost(@PathVariable String ipsumName, Model model){
         model.addAttribute("ipsumPostToDisplay",ipsumPostRepo.findByIpsumName(ipsumName));
         model.addAttribute("ipsumcategories",ipsumCategoryRepo.findAll());
+
         return "ipsumpost-template";
     }
 
