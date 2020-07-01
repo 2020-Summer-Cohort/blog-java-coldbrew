@@ -7,9 +7,69 @@
     <title>Title</title>
 </head>
 <body>
-<!--<h1 th:text = "${ipsumcategory.ipsumCategoryName}">placeholder</h1>-->
-<!--<ul class="list-posts" th:each="ipsumPostToDisplay: ${ipsumcategory.ipsumposts}">-->
-<!--<li><span th:text="${ipsumPostToDisplay.ipsumName}"></span></li>-->
-<!--</ul>-->
+<nav>
+    <ul>
+        <li>
+            <a href="../">Home</a>
+        </li>
+        <li th:each="ipsumcategory: ${ipsumcategories}">
+            <a th:text="${ipsumcategory.categoryName}"
+               th:href="@{'/ipsumcategories/' + ${ipsumcategory.categoryName}}">Category Name</a>
+        </li>
+
+    </ul>
+</nav>
+<h1 th:text = "${ipsumcategory.categoryName}">placeholder</h1>
+<h2 th:text = "${ipsumcategory.description}">placeholder</h2>
+<ul class="list-posts" th:each="ipsumPostToDisplay: ${ipsumcategory.ipsumPosts}">
+    <a class="postlinks"
+       th:href="@{'/ipsumposts/' + ${ipsumPostToDisplay.ipsumName}}">
+        <span th:text="${ipsumPostToDisplay.ipsumName}">Category name</span>
+        <img th:src = "${ipsumPostToDisplay.bgPic}">
+    </a>
+
+</ul>
+<form action="/ipsumposts/add/" method="POST" class="new-post-form">
+<!--    this.ipsumName = ipsumName;-->
+<!--    this.ipsumDescription = ipsumDescription;-->
+<!--    this.ipsumSample = ipsumSample;-->
+<!--    this.ipsumSource = ipsumSource;-->
+<!--    this.ipsumCategory = ipsumCategory;-->
+<!--    this.author = author;-->
+<!--    this.bgPic = bgPic;-->
+<!--    this.date = date;-->
+<!--    this.hashtags = new ArrayList<>(Arrays.asList(hashtags));-->
+
+    <label >
+        Ipsum Name:
+    </label>
+    <input type="text" name="ipsumName" id = " ">
+    <label>
+        Description of Ipsum:
+    </label>
+    <input type="text" name = "ipsumDescription" id = " ">
+    <label>
+        Sample of Ipsum:
+    </label>
+    <input type = "text" name = "ipsumSample" id = "">
+    <label>
+        URL source:
+    </label>
+    <input type = "text" name = "ipsumSource" id = "">
+    <label>
+        Companion Image URL:
+    </label>
+    <input type = "text" name = "bgPic" id = "">
+    <input type = "hidden" name="postCategoryName" th:value = "${ipsumcategory.categoryName}" id = "">
+<!--    <input type = "datetime-local" name = "date"  id = "">-->
+
+    <select name="postAuthor" id="author" required>
+        <option th:each="author: ${authors}"
+                th:value="${author.id}" th:text="${author.authorName}">Author</option>
+    </select>
+
+    <button type = "submit">submit</button>
+<!--    <li th:text="${ipsumPostToDisplay.ipsumName}"></li>-->
+</form>
 </body>
 </html>

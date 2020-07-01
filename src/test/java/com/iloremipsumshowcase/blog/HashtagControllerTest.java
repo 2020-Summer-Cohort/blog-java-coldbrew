@@ -12,8 +12,9 @@ public class HashtagControllerTest {
         HashtagRepository mockHashtagRepo = mock(HashtagRepository.class);
         Hashtag testHashtag = new Hashtag("tester");
         IpsumPostRepository mockIpsumPostRepo = mock(IpsumPostRepository.class);
+        IpsumCategoryRepository mockIpsumCategoryRepo = mock(IpsumCategoryRepository.class);
         when(mockHashtagRepo.findHashtagById(testHashtag.getId())).thenReturn(testHashtag);
-        HashtagController underTest = new HashtagController(mockHashtagRepo,mockIpsumPostRepo);
+        HashtagController underTest = new HashtagController(mockHashtagRepo,mockIpsumPostRepo,mockIpsumCategoryRepo);
         Model mockModel = mock(Model.class);
 
         underTest.showSingleHashtag(testHashtag.getId(),mockModel);

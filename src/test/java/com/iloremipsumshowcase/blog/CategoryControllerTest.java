@@ -15,6 +15,8 @@ public class CategoryControllerTest {
     private IpsumCategoryRepository mockIpsumCategoryRepo;
     private IpsumCategoryController underTest;
     private HashtagRepository mockHashtagRepo;
+    private AuthorRepository mockAuthorRepo;
+    private IpsumPostRepository mockIpsumPostRepo;
     private Model model;
 
 
@@ -22,7 +24,9 @@ public class CategoryControllerTest {
     void setUp(){
         mockIpsumCategoryRepo = mock(IpsumCategoryRepository.class);
         mockHashtagRepo = mock(HashtagRepository.class);
-        underTest = new IpsumCategoryController(mockIpsumCategoryRepo, mockHashtagRepo);
+        mockAuthorRepo = mock(AuthorRepository.class);
+        mockIpsumPostRepo = mock(IpsumPostRepository.class);
+        underTest = new IpsumCategoryController(mockIpsumCategoryRepo, mockHashtagRepo,mockAuthorRepo, mockIpsumPostRepo  );
         model = Mockito.mock(Model.class);
     }
 
@@ -37,7 +41,7 @@ public class CategoryControllerTest {
     @Test
     public void displayAllIpsumCategoriesInteractsWithRepoCorrectly(){
         IpsumCategoryRepository mockRepo = mock(IpsumCategoryRepository.class);
-        IpsumCategoryController underTest = new IpsumCategoryController(mockRepo, mockHashtagRepo);
+        IpsumCategoryController underTest = new IpsumCategoryController(mockRepo, mockHashtagRepo, mockAuthorRepo, mockIpsumPostRepo);
         Model mockModel = mock(Model.class);
 
         underTest.displayAllIpsumCategories(mockModel);

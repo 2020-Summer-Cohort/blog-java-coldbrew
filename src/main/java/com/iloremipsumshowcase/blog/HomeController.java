@@ -18,7 +18,7 @@ public class HomeController {
     }
 
     @RequestMapping({"","/"})
-    public String displayTheIndex(Model model){
+    public String displayIndex(Model model){
         model.addAttribute("ipsumcategories", ipsumCategoryRepo.findAll());
         model.addAttribute("hashtags",hashtagRepo.findAll());
         return "index-template";

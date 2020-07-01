@@ -27,21 +27,22 @@ public class IpsumPostController {
     @GetMapping("ipsumposts/{ipsumName}")
     public String showSingleIpsumPost(@PathVariable String ipsumName, Model model){
         model.addAttribute("ipsumPostToDisplay",ipsumPostRepo.findByIpsumName(ipsumName));
+        model.addAttribute("ipsumcategories",ipsumCategoryRepo.findAll());
         return "ipsumpost-template";
     }
 
     @PostMapping("ipsumposts/add")
-    public String addIpsumPost(String ipsumName, String ipsumDescription, String ipsumSample, String ipsumSource, String bgPic, LocalDate date, String categoryName, String authorName, long... hashtagIds) {
-        IpsumCategory postIpsumCategory = ipsumCategoryRepo.findByCategoryName(categoryName);
-        Author postAuthor = authorRepo.findByAuthorName(authorName);
-        Collection<Hashtag> postHashtags = Arrays.stream(hashtagIds)
-                .mapToObj(id->hashtagRepo.findHashtagById(id))
-                .collect(Collectors.toSet());
+    public String addIpsumPost(String ipsumName, String ipsumDescription, String ipsumSample, String ipsumSource, String bgPic, LocalDate date1, String postCategoryName, String postAuthorName/*, long... hashtagIds*/) {
+        IpsumCategory categoryName = ipsumCategoryRepo.findByCategoryName(postCategoryName);
+        Author author = authorRepo.findByAuthorName(postAuthorName);
+//        Collection<Hashtag> postHashtags = Arrays.stream(hashtagIds)
+//                .mapToObj(id->hashtagRepo.findHashtagById(id))
+//                .collect(Collectors.toSet());
         ipsumPostRepo.save(new IpsumPost(ipsumName,ipsumDescription,
-                ipsumSample, ipsumSource, bgPic, date,
-                postIpsumCategory, postAuthor, postHashtags.toArray(Hashtag[]::new)));
+                ipsumSample, ipsumSource, bgPic, date1,
+                categoryName, author/*, postHashtags.toArray(Hashtag[]::new)*/));
 
-        return "redirect:/ipsumcategories/" +categoryName;
+        return "redirect:/";
     }
 
     @PostMapping("ipsumposts/delete")

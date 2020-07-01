@@ -1,5 +1,7 @@
 package com.iloremipsumshowcase.blog;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -22,7 +24,7 @@ public class IpsumPost {
     private IpsumCategory ipsumCategory;
     @ManyToOne
     private Author author;
-    @ManyToMany(mappedBy = "ipsumPosts")
+    @ManyToMany
     private Collection<Hashtag> hashtags;
 
     protected IpsumPost(){}
@@ -75,6 +77,7 @@ public class IpsumPost {
     public Collection<Hashtag> getHashtags() {
         return hashtags;
     }
+    public String getBgPic(){ return bgPic; }
 
     @Override
     public boolean equals(Object o) {

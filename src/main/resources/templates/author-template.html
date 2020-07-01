@@ -7,6 +7,20 @@
     <title>Title</title>
 </head>
 <body>
+<nav>
+    <ul>
+        <li>
+            <a href="../">Home</a>
+        </li>
 
+    </ul>
+</nav>
+<h1 th:text = "${author.authorName}">placeholder</h1>
+<ul class="list-posts" th:each="ipsumPostToDisplay: ${author.ipsumPosts}">
+    <a class="postlinks"
+       th:href="@{'/ipsumposts/' + ${ipsumPostToDisplay.ipsumName}}">
+        <span th:text="${ipsumPostToDisplay.ipsumName}">Category name</span>
+        <img th:src = "${ipsumPostToDisplay.bgPic}">
+    </a>
 </body>
 </html>

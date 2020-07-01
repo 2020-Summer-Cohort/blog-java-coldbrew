@@ -32,7 +32,7 @@ private IpsumPost testPost;
 }
     @Test
     public void addPostShouldRedirectToCorrectCategory(){
-    String redirect = underTest.addIpsumPost("Test Ipsum","this is a test blog post","Test sample", "test source", "testpic",null, testIpsumCategory.getCategoryName(),testAuthor.getAuthorName(),testHashtag.getId());
+    String redirect = underTest.addIpsumPost("Test Ipsum","this is a test blog post","Test sample", "test source", "testpic",null, testIpsumCategory.getCategoryName(),testAuthor.getAuthorName());
     assertThat(redirect).isEqualTo("redirect:/ipsumcategories/" + testIpsumCategory.getCategoryName());
 }
 
@@ -41,7 +41,7 @@ private IpsumPost testPost;
    when(mockIpsumCategoryRepo.findByCategoryName(testIpsumCategory.getCategoryName())).thenReturn(testIpsumCategory);
     when(mockAuthorRepo.findByAuthorName(testAuthor.getAuthorName())).thenReturn(testAuthor);
     when(mockHashtagRepo.findHashtagById(testHashtag.getId())).thenReturn(testHashtag);
-    underTest.addIpsumPost("Test Ipsum", "this is a test blog post", "Test sample", "test source", "testpic",null,testIpsumCategory.getCategoryName(),testAuthor.getAuthorName(),testHashtag.getId());
+    underTest.addIpsumPost("Test Ipsum", "this is a test blog post", "Test sample", "test source", "testpic",null,testIpsumCategory.getCategoryName(),testAuthor.getAuthorName());
     verify(mockIpsumPostRepo).save(testPost);
 }
 
