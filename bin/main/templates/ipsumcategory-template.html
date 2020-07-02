@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<nav>
+    <ul>
+
+        <li> <a href="../">Home</a></li>
+
+        <li><a href = "../hashtags/">All Tags</a></li>
+        <li><a href = "../ipsumcategories/">All Categories</a></li>
+        <li><a href = "../author/">All Authors</a></li>
+        <li><a href = "../ipsumposts/">All Posts</a></li>
+
+    </ul>
+</nav>
+<h1 th:text = "${ipsumcategory.categoryName}">placeholder</h1>
+<h2 th:text = "${ipsumcategory.description}">placeholder</h2>
+<ul class="list-posts" th:each="ipsumPostToDisplay: ${ipsumcategory.ipsumPosts}">
+    <a class="postlinks"
+       th:href="@{'/ipsumposts/' + ${ipsumPostToDisplay.ipsumName}}">
+        <span th:text="${ipsumPostToDisplay.ipsumName}">Category name</span>
+        <img th:src = "${ipsumPostToDisplay.bgPic}">
+    </a>
+
+</ul>
+<!---->
+
+
+    <form action="/ipsumcategories/delete" method="POST">
+        <input type="hidden" name="categoryName" th:value = "${ipsumcategory.categoryName}" id ="" >
+        <button type="submit">Delete This Category</button>
+    </form>
+</body>
+</html>

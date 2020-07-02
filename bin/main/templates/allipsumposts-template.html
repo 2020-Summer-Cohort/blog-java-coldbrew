@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<nav>
+    <ul>
+
+        <li> <a href="../">Home</a></li>
+
+        <li><a href = "../hashtags/">All Tags</a></li>
+        <li><a href = "../ipsumcategories/">All Categories</a></li>
+        <li><a href = "../author/">All Authors</a></li>
+        <li><a href = "../ipsumposts/">All Posts</a></li>
+
+    </ul>
+</nav>
+<ul>
+    <li th:each="ipsumPost: ${ipsumposts}"><a th:href="@{'../ipsumposts/' + ${ipsumPost.ipsumName}}"><span th:text="'#'+${ipsumPost.ipsumName}"></span></a></li>
+</ul>
+
+<form action="/ipsumposts/add/" method="POST" class="new-post-form">
+
+    <label >
+        Ipsum Name:
+    </label>
+    <input type="text" name="ipsumName" id = " ">
+    <label>
+        Description of Ipsum:
+    </label>
+    <input type="text" name = "ipsumDescription" id = " ">
+    <label>
+        Sample of Ipsum:
+    </label>
+    <input type = "text" name = "ipsumSample" id = "">
+    <label>
+        URL source:
+    </label>
+    <input type = "text" name = "ipsumSource" id = "">
+    <label>
+        Companion Image URL:
+    </label>
+    <input type = "text" name = "bgPic" id = "">
+
+    <!--    <input type = "datetime-local" name = "date"  id = "">-->
+
+    <select name="postAuthor" id="author" required>
+        <option th:each="author: ${authors}"
+                th:value="${author.id}" th:text="${author.authorName}">Author</option>
+    </select>
+    <select name="postCategoryName" id = "categoryName" required>
+        <option th:each = "ipsumcategory: ${ipsumcategories}" th:value="${ipsumcategory.categoryName}" th:text="${ipsumcategory.categoryName}">Category</option>
+    </select>
+
+    <button type = "submit">submit</button>
+
+</body>
+</html>

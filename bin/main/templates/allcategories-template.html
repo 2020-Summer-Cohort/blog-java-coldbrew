@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<nav>
+    <ul>
+
+        <li> <a href="../">Home</a></li>
+
+        <li><a href = "../hashtags/">All Tags</a></li>
+        <li><a href = "../ipsumcategories/">All Categories</a></li>
+        <li><a href = "../author/">All Authors</a></li>
+        <li><a href = "../ipsumposts/">All Posts</a></li>
+
+    </ul>
+</nav>
+<section class = "ipsumcategories">
+    <ul class = "category-list">
+        <li th:each="ipsumcategory: ${ipsumcategories}">
+            <a class="categorylinks"
+               th:href="@{'../ipsumcategories/' + ${ipsumcategory.categoryName}}">
+                <span th:text="${ipsumcategory.categoryName}">Category name</span>
+            </a>
+        </li>
+    </ul>
+</section>
+
+<form action="ipsumcategories/add" method="POST" class="new-category-form">
+    <label >
+        New Category:
+    </label>
+    <input type="text" name="categoryName" id = " ">
+    <label>
+        Description:
+    </label>
+    <input type="text" name = "description" id = " ">
+    <button type = "submit">submit</button>
+</form>
+</body>
+</html>

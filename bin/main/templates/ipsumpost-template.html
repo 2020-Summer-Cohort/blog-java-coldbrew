@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ipsum Iterations</title>
+
+</head>
+<body>
+
+<nav>
+    <ul>
+
+        <li> <a href="../">Home</a></li>
+
+        <li><a href = "../hashtags/">All Tags</a></li>
+        <li><a href = "../ipsumcategories/">All Categories</a></li>
+        <li><a href = "../author/">All Authors</a></li>
+        <li><a href = "../ipsumposts/">All Posts</a></li>
+
+    </ul>
+</nav>
+<h1 th:text="${ipsumPostToDisplay.ipsumName}"></h1>
+<a th:href="@{'/author/' + ${ipsumPostToDisplay.author.id}}"><h2 th:text="${ipsumPostToDisplay.author.authorName}"></h2></a>
+<section>
+    <h3 th:text="${ipsumPostToDisplay.ipsumDescription}"></h3>
+    <h3 th:text="${ipsumPostToDisplay.ipsumSample}"></h3>
+
+</section>
+<form action="/hashtags/add/" method="POST" class="new-hashtag-form">
+    <label >
+       New Hashtag
+    </label>
+    <input type="text" name="hashtagName" id = "hashtag">
+
+    <input type="hidden" name = "ipsumName" th:value="${ipsumPostToDisplay.ipsumName}">
+    <button type = "submit">submit</button>
+
+</form>
+
+    <ul>
+        <li th:each="hashtag: ${ipsumPostToDisplay.hashtags}"><a th:href="@{'/hashtags/' + ${hashtag.id}}" th:text ="'#' + ${hashtag.hashtagName}"></a>
+        <form action="/hashtags/remove" method="POST">
+            <input type="hidden" name="hashtagName" th:value = "${hashtag.hashtagName}">
+            <input type="hidden" name ="ipsumName" th:value="${ipsumPostToDisplay.ipsumName}">
+            <button type="submit">X</button>
+        </form>
+        </li>
+    </ul>
+
+<form action="/ipsumposts/delete/" method="POST">
+    <input type="hidden" name="ipsumName" th:value = "${ipsumPostToDisplay.ipsumName}" id ="" >
+    <button type="submit">Delete This Post</button>
+</form>
+</body>
+</html>
