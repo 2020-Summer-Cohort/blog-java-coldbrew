@@ -20,16 +20,13 @@
 
     </ul>
 </nav>
-<h1 th:text = "${hashtagToDisplay.hashtagName}">placeholder</h1>
-<ul class="list-posts" th:each="ipsumPostToDisplay: ${hashtagToDisplay.ipsumPosts}">
-    <a class="postlinks"
-       th:href="@{'/ipsumposts/' + ${ipsumPostToDisplay.ipsumName}}">
-        <span th:text="${ipsumPostToDisplay.ipsumName}">Category name</span>
-        <img th:src = "${ipsumPostToDisplay.bgPic}">
-    </a>
-    <!--    <li th:text="${ipsumPostToDisplay.ipsumName}"></li>-->
-    <form>
 
-    </form>
+<section class = "hashtag-section">
+    <h2>Explore</h2>
+    <h4>search by tag to find the filler text you NEED in your life</h4>
+    <ul>
+        <li th:each="hashtag: ${hashtags}"><a th:href="@{'../hashtags/' + ${hashtag.id}}"><span th:text="'#'+${hashtag.hashtagName}"></span></a></li>
+    </ul>
 </body>
+
 </html>

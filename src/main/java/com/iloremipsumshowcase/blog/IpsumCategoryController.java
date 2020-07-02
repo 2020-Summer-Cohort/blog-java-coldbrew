@@ -26,7 +26,7 @@ public class IpsumCategoryController {
     public String displayAllIpsumCategories(Model model) {
         model.addAttribute("ipsumcategories", ipsumCategoryRepo.findAll());
         model.addAttribute("hashtags", hashtagRepo.findAll());
-        return "home-template";
+        return "allcategories-template";
     }
 
     @GetMapping("ipsumcategories/{ipsumCategoryName}")

@@ -32,6 +32,14 @@ public class IpsumPostController {
         return "ipsumpost-template";
     }
 
+    @GetMapping("ipsumposts")
+    public String showAllIpsumPosts(Model model){
+        model.addAttribute("ipsumposts",ipsumPostRepo.findAll());
+        model.addAttribute("authors",authorRepo.findAll());
+        model.addAttribute("ipsumcategories",ipsumCategoryRepo.findAll());
+        return "allipsumposts-template";
+    }
+
     @PostMapping("ipsumposts/add")
     public String addIpsumPost(String ipsumName, String ipsumDescription, String ipsumSample, String ipsumSource, String bgPic, LocalDate date3, String postCategoryName, String postAuthorName/*, long... hashtagIds*/) {
         IpsumCategory categoryName = ipsumCategoryRepo.findByCategoryName(postCategoryName);
@@ -47,8 +55,9 @@ public class IpsumPostController {
     }
 
     @PostMapping("ipsumposts/delete")
-    public String deleteIpsumPost(long ipsumPostId){
-       ipsumPostRepo.deleteById(ipsumPostId);
+    public String deleteIpsumPost(String ipsumName){
+       IpsumPost ipsumPostToDelete = ipsumPostRepo.findByIpsumName(ipsumName);
+       ipsumPostRepo.delete(ipsumPostToDelete);
         return "redirect:/";
     }
 

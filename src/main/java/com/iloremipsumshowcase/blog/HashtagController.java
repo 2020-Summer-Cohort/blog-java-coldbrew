@@ -25,21 +25,32 @@ private IpsumCategoryRepository ipsumCategoryRepo;
     return "hashtag-template";
     }
 //
-//    @GetMapping("hashtags")
-//    public String showAllHashtags(Model model){
-//        model.addAttribute("hashtags", hashtagRepo.findAll());
-//        return "home-template";
-//    }
+    @GetMapping("hashtags/")
+    public String showAllHashtags(Model model){
+        model.addAttribute("hashtags", hashtagRepo.findAll());
+        return "allhashtags-template";
+       }
     @PostMapping("hashtags/add")
-    public String addHashtag(String hashtagName){
-        Hashtag hashtagToAdd = new Hashtag(hashtagName);
-        hashtagRepo.save(hashtagToAdd);
+    public String addHashtag(String hashtagName, String ipsumName){
+        IpsumPost ipsumPostToAddHashtag = ipsumPostRepo.findByIpsumName(ipsumName);
+        Hashtag newHashtag = new Hashtag(hashtagName);
+        hashtagRepo.save(newHashtag);
+        ipsumPostToAddHashtag.addHashtag(newHashtag);
+        ipsumPostRepo.save(ipsumPostToAddHashtag);
+
         return "redirect:/";
     }
 
-    @PostMapping("hashtags/delete")
-    public String deleteHashtag(Long hashtagId){
-        hashtagRepo.deleteById(hashtagId);
+
+    @PostMapping("hashtags/remove")
+    public String deleteHashtag(String hashtagName, String ipsumName){
+        IpsumPost ipsumPostToRemoveHashtag = ipsumPostRepo.findByIpsumName(ipsumName);
+        Hashtag oldHashtag = hashtagRepo.findHashtagByHashtagName(hashtagName);
+        ipsumPostToRemoveHashtag.removeHashtag(oldHashtag);
+        ipsumPostRepo.save(ipsumPostToRemoveHashtag);
+        if(oldHashtag.getIpsumPosts().isEmpty()){
+            hashtagRepo.delete(oldHashtag);
+        }
         return "redirect:/";
     }
 }

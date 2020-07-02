@@ -20,16 +20,19 @@
 
     </ul>
 </nav>
-<h1 th:text = "${hashtagToDisplay.hashtagName}">placeholder</h1>
-<ul class="list-posts" th:each="ipsumPostToDisplay: ${hashtagToDisplay.ipsumPosts}">
-    <a class="postlinks"
-       th:href="@{'/ipsumposts/' + ${ipsumPostToDisplay.ipsumName}}">
-        <span th:text="${ipsumPostToDisplay.ipsumName}">Category name</span>
-        <img th:src = "${ipsumPostToDisplay.bgPic}">
-    </a>
-    <!--    <li th:text="${ipsumPostToDisplay.ipsumName}"></li>-->
-    <form>
+<ul>
 
-    </form>
+    <li th:each="author: ${authors}">
+        <a th:text="${author.authorName}"
+           th:href="@{'../author/' + ${author.id}}">Category Name</a>
+    </li>
+</ul>
+
+<form action="/author/add/" method="POST" class="new-author-form">
+    <label >
+        New Author
+    </label>
+    <input type="text" name="authorName" id = "authorName">
+    <button type = "submit">submit</button>
 </body>
 </html>

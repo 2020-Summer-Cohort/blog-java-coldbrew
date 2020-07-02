@@ -15,7 +15,6 @@ public class Hashtag {
     @GeneratedValue
     private long id;
     private String hashtagName;
-//    @ManyToMany
     @ManyToMany(mappedBy = "hashtags")
     private Collection<IpsumPost> ipsumPosts;
 

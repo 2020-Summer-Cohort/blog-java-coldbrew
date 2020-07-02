@@ -112,5 +112,14 @@ public class IpsumPost {
                 ", author=" + author +
                 '}';
     }
+
+
+    public void addHashtag(Hashtag hashtagToAdd) {
+        hashtags.add(hashtagToAdd);
+    }
+
+    public void removeHashtag(Hashtag hashtagToRemove) {hashtags.remove(hashtagToRemove); }
+
 }
+
 

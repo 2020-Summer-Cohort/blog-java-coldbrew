@@ -10,6 +10,8 @@ import static org.mockito.Mockito.*;
 
 public class AuthorControllerTest {
     private AuthorRepository mockAuthorRepo;
+    private IpsumPostRepository mockIpsumPostRepo;
+    private IpsumCategoryRepository mockIpsumCategoryRepo;
     private AuthorController underTest;
     private Model mockModel;
     private Long testAuthorId;
@@ -18,9 +20,11 @@ public class AuthorControllerTest {
     @BeforeEach
     void setUp() {
         mockAuthorRepo = mock(AuthorRepository.class);
+        mockIpsumPostRepo = mock(IpsumPostRepository.class);
+        mockIpsumCategoryRepo = mock(IpsumCategoryRepository.class);
         testAuthor = new Author("Mr.Test");
         testAuthorId = testAuthor.getId();
-        underTest = new AuthorController(mockAuthorRepo);
+        underTest = new AuthorController(mockAuthorRepo, mockIpsumPostRepo, mockIpsumCategoryRepo);
         mockModel = Mockito.mock(Model.class);
     }
     @Test

@@ -10,13 +10,13 @@
 <body>
 <nav>
 <ul>
-    <li>
-    <a href="../">Home</a>
-    </li>
-    <li th:each="ipsumcategory: ${ipsumcategories}">
-        <a th:text="${ipsumcategory.categoryName}"
-           th:href="@{'/ipsumcategories/' + ${ipsumcategory.categoryName}}">Category Name</a>
-    </li>
+
+    <li> <a href="../">Home</a></li>
+
+    <li><a href = "./hashtags/">All Tags</a></li>
+    <li><a href = "./ipsumcategories/">All Categories</a></li>
+    <li><a href = "./author/">All Authors</a></li>
+    <li><a href = "./ipsumposts/">All Posts</a></li>
 
 </ul>
 </nav>
@@ -42,16 +42,5 @@
         <li th:each="hashtag: ${hashtags}"><a th:href="@{'/hashtags/' + ${hashtag.id}}"><span th:text="'#'+${hashtag.hashtagName}"></span></a></li>
     </ul>
 </section>
-<form action="ipsumcategories/add" method="POST" class="new-category-form">
-    <label >
-        New Category:
-    </label>
-    <input type="text" name="categoryName" id = " ">
-    <label>
-        Description:
-    </label>
-    <input type="text" name = "description" id = " ">
-    <button type = "submit">submit</button>
-</form>
 </body>
 </html>
