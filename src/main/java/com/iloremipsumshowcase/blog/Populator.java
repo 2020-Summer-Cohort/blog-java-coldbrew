@@ -46,15 +46,7 @@ public class Populator implements CommandLineRunner {
         LocalDate date2 = LocalDate.of(2020, 6,28);
         LocalDate date3 = LocalDate.now();
 
-//        this.ipsumName = ipsumName;
-//        this.ipsumDescription = ipsumDescription;
-//        this.ipsumSample = ipsumSample;
-//        this.ipsumSource = ipsumSource;
-//        this.ipsumCategory = ipsumCategory;
-//        this.author = author;
-//        this.bgPic = bgPic;
-//        this.date = date;
-//        this.hashtags = new ArrayList<>(Arrays.asList(hashtags));
+
         IpsumPost ipsumPost1 = new IpsumPost("Lorem Ipsum","The classic filler text, helping create page templates since 1914.","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
         "https://www.lipsum.com/", "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Lorem-ipsum-sample.svg/1045px-Lorem-ipsum-sample.svg.png",
                 date1, alphabetIpsums,author1,hashtag3);

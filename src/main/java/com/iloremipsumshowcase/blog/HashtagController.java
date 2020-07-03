@@ -19,12 +19,12 @@ private IpsumCategoryRepository ipsumCategoryRepo;
 
     @GetMapping("hashtags/{id}")
     public String showSingleHashtag( @PathVariable Long id, Model model) {
-//    model.addAttribute("hashtags",hashtagRepo.findHashtagById(id));
+
         model.addAttribute("hashtagToDisplay",hashtagRepo.findHashtagById(id));
         model.addAttribute("ipsumcategories",ipsumCategoryRepo.findAll());
     return "hashtag-template";
     }
-//
+
     @GetMapping("hashtags/")
     public String showAllHashtags(Model model){
         model.addAttribute("hashtags", hashtagRepo.findAll());
