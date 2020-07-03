@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container h1 {
+    background-color:rgba(223, 206, 183,.7);
+    text-align: center;
+    color: rgb(32, 52, 170);
+    max-width: 100%;
+    text-shadow: 0px 0px 10px rgb(255, 255, 255);
+    
+    padding: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-style: wavy;
+    border-width: 1em;
+
+}
+
+body{
+    background:rgb(30, 30, 90);
+    background-image: url(/src/main/resources/static/css/cssimages/halftone.svg.svg);
+    background-size: 95em;
+}
