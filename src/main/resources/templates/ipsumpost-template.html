@@ -6,10 +6,12 @@
     <meta charset="UTF-8">
     <title>Ipsum Iterations</title>
     <link rel="stylesheet" href="/navbar.css" type="text/css"/>
+
 </head>
 <body>
 
 <nav>
+    <p  >Navigation  </p>
     <ul>
 
         <li> <a href="../">Home</a></li>
@@ -21,13 +23,18 @@
 
     </ul>
 </nav>
+<section class ="list-posts>
 <h1 th:text="${ipsumPostToDisplay.ipsumName}"></h1>
-<a th:href="@{'/author/' + ${ipsumPostToDisplay.author.id}}"><h2 th:text="${ipsumPostToDisplay.author.authorName}"></h2></a>
-<section>
+<a th:href="@{'/author/' + ${ipsumPostToDisplay.author.id}}">
+    <h2 th:text="${ipsumPostToDisplay.author.authorName}"></h2>
+</a>
+
     <h3 th:text="${ipsumPostToDisplay.ipsumDescription}"></h3>
     <h3 th:text="${ipsumPostToDisplay.ipsumSample}"></h3>
 
 </section>
+
+<section class = "add-new">
 <form action="/hashtags/add/" method="POST" class="new-hashtag-form">
     <label >
        New Hashtag
@@ -36,9 +43,9 @@
 
     <input type="hidden" name = "ipsumName" th:value="${ipsumPostToDisplay.ipsumName}">
     <button type = "submit">submit</button>
-
 </form>
-
+</section>
+<section>
     <ul>
         <li th:each="hashtag: ${ipsumPostToDisplay.hashtags}"><a th:href="@{'/hashtags/' + ${hashtag.id}}" th:text ="'#' + ${hashtag.hashtagName}"></a>
         <form action="/hashtags/remove" method="POST">
@@ -48,7 +55,7 @@
         </form>
         </li>
     </ul>
-
+</section>
 <form action="/ipsumposts/delete/" method="POST">
     <input type="hidden" name="ipsumName" th:value = "${ipsumPostToDisplay.ipsumName}" id ="" >
     <button type="submit">Delete This Post</button>

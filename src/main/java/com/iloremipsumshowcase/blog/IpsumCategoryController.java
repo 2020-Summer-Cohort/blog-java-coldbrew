@@ -29,9 +29,9 @@ public class IpsumCategoryController {
         return "allcategories-template";
     }
 
-    @GetMapping("ipsumcategories/{ipsumCategoryName}")
-    public String showSingleIpsumCategory(@PathVariable String ipsumCategoryName, Model model) {
-        model.addAttribute("ipsumcategory", ipsumCategoryRepo.findByCategoryName(ipsumCategoryName));
+    @GetMapping("ipsumcategories/{categoryName}")
+    public String showSingleIpsumCategory(@PathVariable String categoryName, Model model) {
+        model.addAttribute("ipsumcategory", ipsumCategoryRepo.findByCategoryName(categoryName));
         model.addAttribute("ipsumcategories", ipsumCategoryRepo.findAll());
         model.addAttribute("ipsumposts",ipsumPostRepo.findAll());
         model.addAttribute("hashtags", hashtagRepo.findAll());

@@ -6,10 +6,12 @@
     <meta charset="UTF-8">
     <title>View All Categories</title>
     <link rel="stylesheet" href="/navbar.css" type="text/css"/>
+    <link rel="stylesheet" href="/viewall-layout&style.css" type="text/css"/>
 </head>
 <body>
 
 <nav>
+    <p>Navigation</p>
     <ul>
 
         <li> <a href="../">Home</a></li>
@@ -21,7 +23,7 @@
 
     </ul>
 </nav>
-<section class = "ipsumcategories">
+<section class = "view-all-container">
     <ul class = "category-list">
         <li th:each="ipsumcategory: ${ipsumcategories}">
             <a class="categorylinks"
@@ -31,8 +33,8 @@
         </li>
     </ul>
 </section>
-
-<form action="ipsumcategories/add" method="POST" class="new-category-form">
+<section class = "add-new">
+<form action="/ipsumcategories/add" method="POST" >
     <label >
         New Category:
     </label>
@@ -43,5 +45,6 @@
     <input type="text" name = "description" id = " ">
     <button type = "submit">submit</button>
 </form>
+</section>
 </body>
 </html>

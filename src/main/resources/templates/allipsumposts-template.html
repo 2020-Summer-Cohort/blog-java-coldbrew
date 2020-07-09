@@ -6,10 +6,12 @@
     <meta charset="UTF-8">
     <title>View All Posts</title>
     <link rel="stylesheet" href="/navbar.css" type="text/css"/>
+    <link rel="stylesheet" href="/viewall-layout&style.css" type="text/css"/>
 </head>
 <body>
 
 <nav>
+    <p  >Navigation  </p>
     <ul>
 
         <li> <a href="../">Home</a></li>
@@ -21,10 +23,13 @@
 
     </ul>
 </nav>
+<section class ="view-all-container">
 <ul>
-    <li th:each="ipsumPost: ${ipsumposts}"><a th:href="@{'../ipsumposts/' + ${ipsumPost.ipsumName}}"><span th:text="'#'+${ipsumPost.ipsumName}"></span></a></li>
+    <li th:each="ipsumPost: ${ipsumposts}"><a th:href="@{'../ipsumposts/' + ${ipsumPost.ipsumName}}"><span th:text="${ipsumPost.ipsumName}"></span></a></li>
 </ul>
-
+</section>
+<section class = "add-new">
+    <h2>New Post</h2>
 <form action="/ipsumposts/add/" method="POST" class="new-post-form">
 
     <label >
@@ -35,30 +40,30 @@
         Description of Ipsum:
     </label>
     <input type="text" name = "ipsumDescription" id = " ">
-    <label>
+    <label >
         Sample of Ipsum:
     </label>
-    <input type = "text" name = "ipsumSample" id = "">
+    <input type = "text" name = "ipsumSample" id = "" >
     <label>
         URL source:
     </label>
-    <input type = "text" name = "ipsumSource" id = "">
+    <input type = "text" name = "ipsumSource" id = " " >
     <label>
         Companion Image URL:
     </label>
-    <input type = "text" name = "bgPic" id = "">
+    <input type = "text" name = "bgPic" id = " ">
 
     <!--    <input type = "datetime-local" name = "date"  id = "">-->
 
-    <select name="postAuthor" id="author" required>
+    <select name="author" id="author" required>
         <option th:each="author: ${authors}"
-                th:value="${author.id}" th:text="${author.authorName}">Author</option>
+                th:value="${author.authorName}" th:text="${author.authorName}">Author</option>
     </select>
-    <select name="postCategoryName" id = "categoryName" required>
+
+    <select name="ipsumcategory" id = "ipsumcategory" required>
         <option th:each = "ipsumcategory: ${ipsumcategories}" th:value="${ipsumcategory.categoryName}" th:text="${ipsumcategory.categoryName}">Category</option>
     </select>
-
     <button type = "submit">submit</button>
-
+    </section>
 </body>
 </html>

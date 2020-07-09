@@ -24,12 +24,16 @@
 
 </ul>
 </nav>
+
 <section class = "container">
     <h1>| Miles' Miracle Ipsum Emporium |</h1>
     <h4>important in-depth discussions regarding how to take up space on webpages which desperately need content.</h4>
 
 </section>
+<section class = "grid">
 <section class = "ipsumcategories">
+    <h2>Genre</h2>
+    <h4>There's more to Ipsum than just Lorem</h4>
     <ul class = "category-list">
         <li th:each="ipsumcategory: ${ipsumcategories}">
             <a class="categorylinks"
@@ -41,10 +45,11 @@
 </section>
 <section class = "hashtag-section">
     <h2>Explore</h2>
-    <h4>search by tag to find the filler text you NEED in your life</h4>
+    <h4>Search by tag & find the filler text you NEED in your life</h4>
     <ul>
         <li th:each="hashtag: ${hashtags}"><a th:href="@{'/hashtags/' + ${hashtag.id}}"><span th:text="'#'+${hashtag.hashtagName}"></span></a></li>
     </ul>
+</section>
 </section>
 </body>
 </html>

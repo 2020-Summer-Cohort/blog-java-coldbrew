@@ -6,10 +6,12 @@
     <meta charset="UTF-8">
     <title>Search By Category</title>
     <link rel="stylesheet" href="/navbar.css" type="text/css"/>
+    <link rel="stylesheet" href="/ipsumpost-layout&style.css" type="text/css"/>
 </head>
 <body>
 
 <nav>
+    <p >Navigation  </p>
     <ul>
 
         <li> <a href="../">Home</a></li>
@@ -21,6 +23,7 @@
 
     </ul>
 </nav>
+<section class = "container">
 <h1 th:text = "${ipsumcategory.categoryName}">placeholder</h1>
 <h2 th:text = "${ipsumcategory.description}">placeholder</h2>
 <ul class="list-posts" th:each="ipsumPostToDisplay: ${ipsumcategory.ipsumPosts}">
@@ -31,12 +34,12 @@
     </a>
 
 </ul>
-<!---->
 
 
-    <form action="/ipsumcategories/delete" method="POST">
+    <form action="/ipsumcategories/delete" method="POST" >
         <input type="hidden" name="categoryName" th:value = "${ipsumcategory.categoryName}" id ="" >
         <button type="submit">Delete This Category</button>
     </form>
+</section>
 </body>
 </html>
